@@ -17,8 +17,8 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Release
-      run: dotnet release --configuration Release --no-restore
+    - name: Publish
+      run: dotnet publish --configuration Release --no-restore
     - name: Upload artifact
       uses: actions/upload-artifact@v2-preview
       with:
