@@ -56,9 +56,17 @@ namespace OpenCueService
             return Profiles;
         }
 
-        public Profile GetProfile(string name)
+        public Profile? GetProfile(string name)
         {
-            return Profiles.Values.First(profile => profile.Name.Equals(name));
+            var Profile = Profiles.Values.FirstOrDefault(profile => profile.Name.Equals(name));
+            if (Profile == default(Profile))
+            {
+                return null;
+            }
+            else
+            {
+                return Profile;
+            }
         }
 
         public Profile TriggerProfile(Profile profile)

@@ -27,7 +27,12 @@ namespace OpenCueService.Controllers
         [Route("{name}")]
         public Profile GetProfile(string name)
         {
-            return ProfileManager.GetProfile(name);
+            var profile = ProfileManager.GetProfile(name);
+            if (profile == null)
+            {
+                throw new ApiError(404, "Profile not found");
+            }
+            return profile;
         }
 
         //Trigger a profile as event

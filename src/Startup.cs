@@ -25,7 +25,10 @@ namespace OpenCueService
             services.AddSingleton<ProfileManager>();
 
             services.AddControllers(options =>
-                options.Filters.Add(new SdkExceptionFilter()));
+            {
+                options.Filters.Add(new SdkExceptionFilter());
+                options.Filters.Add(new ApiErrorFilter());
+            });
 
             services.AddOpenApiDocument();
         }
