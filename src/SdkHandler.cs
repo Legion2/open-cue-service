@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.Options;
-using Cg = CgSDK_Interop.CgSDK;
 
 namespace open_cue_service
 {
@@ -16,49 +15,49 @@ namespace open_cue_service
         // Implement all CgSDK proxy functions
         public SdkError GetLastError()
         {
-            return new SdkError(Cg.GetLastError());
+            return new SdkError(CgSdkInterop.GetLastError());
         }
         public void PerformProtocolHandshake()
         {
-            Cg.PerformProtocolHandshake();
+            CgSdkInterop.PerformProtocolHandshake();
         }
         public void RequestControl()
         {
-            WithErrorHandling(Cg.RequestControl());
+            WithErrorHandling(CgSdkInterop.RequestControl());
         }
         public void ReleaseControl()
         {
-            WithErrorHandling(Cg.ReleaseControl());
+            WithErrorHandling(CgSdkInterop.ReleaseControl());
         }
 
         public void SetGame(string gameName)
         {
-            WithErrorHandling(Cg.SetGame(gameName));
+            WithErrorHandling(CgSdkInterop.SetGame(gameName));
         }
 
         public void SetState(string stateName)
         {
-            WithErrorHandling(Cg.SetState(stateName));
+            WithErrorHandling(CgSdkInterop.SetState(stateName));
         }
 
         public void SetEvent(string eventName)
         {
-            WithErrorHandling(Cg.SetEvent(eventName));
+            WithErrorHandling(CgSdkInterop.SetEvent(eventName));
         }
 
         public void ClearState(string stateName)
         {
-            WithErrorHandling(Cg.ClearState(stateName));
+            WithErrorHandling(CgSdkInterop.ClearState(stateName));
         }
 
         public void ClearAllStates()
         {
-            WithErrorHandling(Cg.ClearAllStates());
+            WithErrorHandling(CgSdkInterop.ClearAllStates());
         }
 
         public void ClearAllEvents()
         {
-            WithErrorHandling(Cg.ClearAllEvents());
+            WithErrorHandling(CgSdkInterop.ClearAllEvents());
         }
 
         private void WithErrorHandling(bool returnValue)

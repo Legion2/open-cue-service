@@ -17,8 +17,8 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.4.1" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="CgSDK_Interop">
-      <HintPath>./CgSDK_Interop.dll</HintPath>
-    </Reference>
+    <Content Include="CgSDK.x64_2015.dll">
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>
