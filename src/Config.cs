@@ -1,4 +1,4 @@
-namespace open_cue_service
+namespace OpenCueService
 {
     public class Config
     {

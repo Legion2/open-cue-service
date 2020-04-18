@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
 
-namespace open_cue_service
+namespace OpenCueService
 {
     public class ProfileManager
     {

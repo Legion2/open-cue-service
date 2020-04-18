@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace open_cue_service.Controllers
+namespace OpenCueService.Controllers
 {
     public class SdkExceptionFilter : IActionFilter, IOrderedFilter
     {

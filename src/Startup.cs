@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace open_cue_service
+namespace OpenCueService
 {
     using Controllers;
     public class Startup

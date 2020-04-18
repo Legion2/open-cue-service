@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace open_cue_service.CgSdk
+namespace OpenCueService.CgSdk
 {
     internal class CgSdkInterop
     {

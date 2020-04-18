@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace open_cue_service.Controllers
+namespace OpenCueService.Controllers
 {
     [ApiController]
     [Route("api/profiles")]

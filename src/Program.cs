@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace open_cue_service
+namespace OpenCueService
 {
     public class Program
     {
