@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace open_cue_service.Controllers
 {
+    using CgSdk;
     [ApiController]
     [Route("api/sdk")]
     public class SdkController : ControllerBase
@@ -16,6 +17,19 @@ namespace open_cue_service.Controllers
             _sdk = sdk;
         }
 
+        [HttpGet]
+        [Route("details")]
+        public CorsairProtocolDetails GetDetails()
+        {
+            return _sdk.GetCorsairProtocolDetails();
+        }
+
+        [HttpGet]
+        [Route("control")]
+        public bool GetControl()
+        {
+            return _sdk.HasControl();
+        }
 
         [HttpPost]
         [Route("control/{value:bool}")]
@@ -29,7 +43,7 @@ namespace open_cue_service.Controllers
             {
                 _sdk.ReleaseControl();
             }
-            return value;
+            return GetControl();
         }
     }
 }

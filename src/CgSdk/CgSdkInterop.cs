@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 
-namespace open_cue_service
+namespace open_cue_service.CgSdk
 {
-    public class CgSdkInterop
+    internal class CgSdkInterop
     {
         [DllImport("CgSDK.x64_2015.dll", EntryPoint="CgSdkClearAllEvents", CallingConvention=CallingConvention.Cdecl)]
         public static extern bool ClearAllEvents();
@@ -13,7 +13,7 @@ namespace open_cue_service
         [DllImport("CgSDK.x64_2015.dll", EntryPoint="CgSdkGetLastError", CallingConvention=CallingConvention.Cdecl)]
         public static extern int GetLastError();
         [DllImport("CgSDK.x64_2015.dll", EntryPoint="CgSdkPerformProtocolHandshake", CallingConvention=CallingConvention.Cdecl)]
-        public static extern void PerformProtocolHandshake();
+        public static extern _CorsairProtocolDetails PerformProtocolHandshake();
         [DllImport("CgSDK.x64_2015.dll", EntryPoint="CgSdkReleaseControl", CallingConvention=CallingConvention.Cdecl)]
         public static extern bool ReleaseControl();
         [DllImport("CgSDK.x64_2015.dll", EntryPoint="CgSdkRequestControl", CallingConvention=CallingConvention.Cdecl)]

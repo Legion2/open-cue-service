@@ -3,13 +3,26 @@ using Microsoft.Extensions.Options;
 
 namespace open_cue_service
 {
+    using CgSdk;
     public class SdkHandler
     {
+        private readonly CorsairProtocolDetails corsairProtocolDetails;
+
+        private bool hasControl = false;
         public SdkHandler(IOptions<Config> config)
         {
-            PerformProtocolHandshake();
+            corsairProtocolDetails = PerformProtocolHandshake();
+            Console.WriteLine(corsairProtocolDetails.SdkVersion);
             RequestControl();
             SetGame(config.Value.Game);
+        }
+        public CorsairProtocolDetails GetCorsairProtocolDetails()
+        {
+            return corsairProtocolDetails;
+        }
+        public bool HasControl()
+        {
+            return hasControl;
         }
 
         // Implement all CgSDK proxy functions
@@ -17,17 +30,19 @@ namespace open_cue_service
         {
             return new SdkError(CgSdkInterop.GetLastError());
         }
-        public void PerformProtocolHandshake()
+        private CorsairProtocolDetails PerformProtocolHandshake()
         {
-            CgSdkInterop.PerformProtocolHandshake();
+            return new CorsairProtocolDetails(CgSdkInterop.PerformProtocolHandshake());
         }
         public void RequestControl()
         {
             WithErrorHandling(CgSdkInterop.RequestControl());
+            hasControl = true;
         }
         public void ReleaseControl()
         {
             WithErrorHandling(CgSdkInterop.ReleaseControl());
+            hasControl = false;
         }
 
         public void SetGame(string gameName)
