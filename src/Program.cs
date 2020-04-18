@@ -15,6 +15,7 @@ namespace open_cue_service
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:25555/");
                 });
     }
 }

@@ -1,5 +1,4 @@
 // _CorsairProtocolDetails and CorsairProtocolDetails definitions are from RGB.NET by DarthAffe https://github.com/DarthAffe/RGB.NET
-
 using System;
 using System.Runtime.InteropServices;
 

@@ -10,7 +10,10 @@
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
 
     <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable> 
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>None</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
