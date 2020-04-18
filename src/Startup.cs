@@ -30,7 +30,13 @@ namespace OpenCueService
                 options.Filters.Add(new ApiErrorFilter());
             });
 
-            services.AddOpenApiDocument();
+            services.AddOpenApiDocument(document =>
+            {
+                document.DocumentName = "openapi";
+                document.Title = "Open CUE Service";
+                document.Description = "HTTP REST API service for Open CUE CLI";
+                document.Version = "0.1.0";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +49,17 @@ namespace OpenCueService
 
             app.UseRouting();
 
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
+            app.UseOpenApi(options =>
+            {
+                options.DocumentName = "openapi";
+                options.Path = "/openapi/v1/openapi.json";
+            });
+            app.UseSwaggerUi3(options =>
+            {
+                options.Path = "/openapi";
+                options.DocumentPath = "/openapi/v1/openapi.json";
+                options.DocExpansion = "list";
+            });
 
             app.UseEndpoints(endpoints =>
             {
