@@ -73,6 +73,7 @@ namespace OpenCueService
         {
             Sdk.SetEvent(profile.Name);
             lastTriggeredProfile = profile;
+            profile.State = false;
             return profile;
         }
 
