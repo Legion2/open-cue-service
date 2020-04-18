@@ -8,20 +8,18 @@ namespace open_cue_service.Controllers
     [Route("api/profiles")]
     public class ProfilesController : ControllerBase
     {
-        private readonly ILogger<ProfilesController> _logger;
-        private readonly ProfileManager _profileManager;
+        private readonly ProfileManager ProfileManager;
 
-        public ProfilesController(ILogger<ProfilesController> logger, ProfileManager ProfileManager)
+        public ProfilesController(ProfileManager profileManager)
         {
-            _logger = logger;
-            _profileManager = ProfileManager;
+            ProfileManager = profileManager;
         }
 
         //Get all Profils
         [HttpGet]
         public IEnumerable<Profile> GetAllProfiles()
         {
-            return _profileManager.GetAllProfiles().Values;
+            return ProfileManager.GetAllProfiles().Values;
         }
 
         //Get a profile
@@ -29,7 +27,7 @@ namespace open_cue_service.Controllers
         [Route("{name}")]
         public Profile GetProfile(string name)
         {
-            return _profileManager.GetProfile(name);
+            return ProfileManager.GetProfile(name);
         }
 
         //Trigger a profile as event
@@ -38,17 +36,22 @@ namespace open_cue_service.Controllers
         public Profile TriggerProfile(string name)
         {
             var profile = GetProfile(name);
-            return _profileManager.TriggerProfile(profile);
+            return ProfileManager.TriggerProfile(profile);
         }
 
-        //Activate a profile
+        [HttpGet]
+        [Route("{name}/state")]
+        public bool GetState(string name)
+        {
+            return GetProfile(name).State;
+        }
+        //Set the state of a profile
         [HttpPost]
-        [Route("{name}/activate/{value:bool}")]
-        public Profile ActivateProfile(string name, bool value)
+        [Route("{name}/state/{value:bool}")]
+        public Profile SetState(string name, bool value)
         {
             var profile = GetProfile(name);
-            return _profileManager.ActivateProfile(profile, value);
+            return ProfileManager.ActivateProfile(profile, value);
         }
-
     }
 }

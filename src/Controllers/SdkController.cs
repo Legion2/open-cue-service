@@ -9,41 +9,55 @@ namespace open_cue_service.Controllers
     public class SdkController : ControllerBase
     {
         private readonly ILogger<ProfilesController> _logger;
-        private readonly SdkHandler _sdk;
+        private readonly SdkHandler Sdk;
+        private readonly ProfileManager ProfileManager;
 
-        public SdkController(ILogger<ProfilesController> logger, SdkHandler sdk)
+        public SdkController(ILogger<ProfilesController> logger, SdkHandler sdk, ProfileManager profileManager)
         {
             _logger = logger;
-            _sdk = sdk;
+            Sdk = sdk;
+            ProfileManager = profileManager;
+        }
+
+        [HttpGet]
+        [Route("game")]
+        public string GetGame()
+        {
+            return Sdk.GetGame();
         }
 
         [HttpGet]
         [Route("details")]
         public CorsairProtocolDetails GetDetails()
         {
-            return _sdk.GetCorsairProtocolDetails();
+            return Sdk.GetCorsairProtocolDetails();
         }
 
         [HttpGet]
         [Route("control")]
         public bool GetControl()
         {
-            return _sdk.HasControl();
+            return Sdk.HasControl();
         }
 
         [HttpPost]
         [Route("control/{value:bool}")]
         public bool Control(bool value)
         {
-            if (value)
-            {
-                _sdk.RequestControl();
-            }
-            else
-            {
-                _sdk.ReleaseControl();
-            }
-            return GetControl();
+            return ProfileManager.Control(value);
+        }
+
+        [HttpPost]
+        [Route("stop-events")]
+        public void StopAllEvents()
+        {
+            ProfileManager.StopAllEvents();
+        }
+        [HttpPost]
+        [Route("deactivate-profiles")]
+        public void DeactivateAllProfiles()
+        {
+            ProfileManager.DeactivateAllProfiles();
         }
     }
 }

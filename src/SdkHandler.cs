@@ -9,17 +9,26 @@ namespace open_cue_service
         private readonly CorsairProtocolDetails corsairProtocolDetails;
 
         private bool hasControl = false;
+
+        private readonly string Game;
         public SdkHandler(IOptions<Config> config)
         {
+            Game = config.Value.Game;
             corsairProtocolDetails = PerformProtocolHandshake();
             Console.WriteLine(corsairProtocolDetails.SdkVersion);
             RequestControl();
-            SetGame(config.Value.Game);
+            SetGame(Game);
         }
         public CorsairProtocolDetails GetCorsairProtocolDetails()
         {
             return corsairProtocolDetails;
         }
+
+        public string GetGame()
+        {
+            return Game;
+        }
+
         public bool HasControl()
         {
             return hasControl;

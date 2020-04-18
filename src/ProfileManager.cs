@@ -12,25 +12,25 @@ namespace open_cue_service
 
         public ProfileManager(IOptions<Config> config, SdkHandler sdkHandler)
         {
-            _config = config.Value;
-            _sdk = sdkHandler;
+            Config = config.Value;
+            Sdk = sdkHandler;
             Profiles = loadPriorities().ToDictionary(entry => entry.Key, entry => new Profile
             {
                 Name = entry.Key,
                 Priority = entry.Value,
-                Active = false
+                State = false
             });
         }
 
-        private readonly Config _config;
-        private readonly SdkHandler _sdk;
-        private readonly Dictionary<string, Profile> Profiles;
+        private readonly Config Config;
+        private readonly SdkHandler Sdk;
+        private readonly IDictionary<string, Profile> Profiles;
 
         private Profile? lastTriggeredProfile = null;
 
-        private Dictionary<string, int> loadPriorities()
+        private IDictionary<string, int> loadPriorities()
         {
-            var ProfilePrioritiesFile = Path.Combine(GameSkdEffectsPath, _config.Game, "priorities.cfg");
+            var ProfilePrioritiesFile = Path.Combine(GameSkdEffectsPath, Config.Game, "priorities.cfg");
             var Priorities = new Dictionary<string, int>();
             foreach (var row in File.ReadAllLines(ProfilePrioritiesFile))
             {
@@ -51,7 +51,7 @@ namespace open_cue_service
             return Priorities;
         }
 
-        public Dictionary<string, Profile> GetAllProfiles()
+        public IDictionary<string, Profile> GetAllProfiles()
         {
             return Profiles;
         }
@@ -61,8 +61,9 @@ namespace open_cue_service
             return Profiles.Values.First(profile => profile.Name.Equals(name));
         }
 
-        public Profile TriggerProfile(Profile profile) {
-            _sdk.SetEvent(profile.Name);
+        public Profile TriggerProfile(Profile profile)
+        {
+            Sdk.SetEvent(profile.Name);
             lastTriggeredProfile = profile;
             return profile;
         }
@@ -71,16 +72,50 @@ namespace open_cue_service
         {
             if (activate)
             {
-                _sdk.SetState(profile.Name);
-                profile.Active = true;
+                Sdk.SetState(profile.Name);
+                profile.State = true;
             }
             else
             {
-                _sdk.ClearState(profile.Name);
-                profile.Active = false;
+                Sdk.ClearState(profile.Name);
+                profile.State = false;
             }
             return profile;
         }
 
+        public bool Control(bool value)
+        {
+            if (Sdk.HasControl() == value)
+            {
+                return value;
+            }
+
+            if (value)
+            {
+                Sdk.RequestControl();
+                foreach (var profile in Profiles.Values)
+                {
+                    if (profile.State)
+                    {
+                        Sdk.SetState(profile.Name);
+                    }
+                }
+            }
+            else
+            {
+                Sdk.ReleaseControl();
+            }
+            return value;
+        }
+
+        public void DeactivateAllProfiles()
+        {
+            Sdk.ClearAllStates();
+        }
+
+        public void StopAllEvents()
+        {
+            Sdk.ClearAllEvents();
+        }
     }
 }

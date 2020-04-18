@@ -4,7 +4,6 @@ namespace open_cue_service
     {
         public string Name { get; set; } = "";
         public int Priority { get; set; }
-
-        public bool Active { get; set; }
+        public bool State { get; set; }
     }
 }
