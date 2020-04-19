@@ -1,6 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+    <Title>Open CUE Service</Title>
+    <Version>0.1.0</Version>
+    <Authors>Legion2</Authors>
+    <Description>HTTP REST API service for Open CUE CLI</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Legion2/open-cue-service</RepositoryUrl>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>OpenCueService</RootNamespace>
@@ -20,8 +26,9 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.4.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CgSDK.x64_2015.dll">
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
+    <Content Include="CgSDK.x64_2015.dll" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Content Remove="appsettings.*.json" />
   </ItemGroup>
 </Project>
