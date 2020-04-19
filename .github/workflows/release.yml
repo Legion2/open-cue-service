@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.201
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Publish
+        run: dotnet publish --configuration Release --no-restore --output publish/open-cue-service/
+      - name: Create Release Archive
+        shell: bash
+        run: |
+          cd publish/
+          7z a open-cue-service.zip open-cue-service/
+      - name: Get upload url
+        id: release-id
+        shell: bash
+        run: |
+          RELEASE_ID=$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)
+          echo "::set-output name=upload_url::https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets{?name,label}"
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release-id.outputs.upload_url }}
+          asset_path: publish/open-cue-service.zip
+          asset_name: open-cue-service.zip
+          asset_content_type: application/zip
