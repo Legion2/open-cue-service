@@ -35,8 +35,14 @@ namespace OpenCueService
         public SdkError GetLastError()
         {
             var RawErrorCode = CgSdkInterop.GetLastError();
-            var ErrorCode = Enum.IsDefined(typeof(CorsairError), RawErrorCode) ? (CorsairError)RawErrorCode : OpenCueService.CorsairError.Unknown;
-            return new SdkError(ErrorCode);
+            if (Enum.IsDefined(typeof(CorsairError), RawErrorCode))
+            {
+                return new SdkError((CorsairError)RawErrorCode);
+            }
+            else
+            {
+                return new UnknownSdkError(RawErrorCode);
+            }
         }
         private CorsairProtocolDetails PerformProtocolHandshake()
         {
@@ -95,12 +101,26 @@ namespace OpenCueService
     public class SdkError : Exception
     {
         public SdkError(CorsairError corsairError)
-           : base($"Sdk Error occurred: {corsairError.GetMessage()}")
+           : this(corsairError, $"Sdk Error occurred: {corsairError.GetMessage()}") { }
+
+        public SdkError(CorsairError corsairError, string message)
+           : base(message)
         {
             CorsairError = corsairError;
         }
 
         public readonly CorsairError CorsairError;
+    }
+
+    public class UnknownSdkError : SdkError
+    {
+        public UnknownSdkError(int rawCorsairError)
+           : base(OpenCueService.CorsairError.Unknown, $"Unknown Sdk Error occurred: {rawCorsairError}")
+        {
+            RawCorsairError = rawCorsairError;
+        }
+
+        public readonly int RawCorsairError;
     }
 
     public static class Extensions

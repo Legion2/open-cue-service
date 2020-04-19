@@ -8,13 +8,11 @@ namespace OpenCueService.Controllers
     [Route("api/sdk")]
     public class SdkController : ControllerBase
     {
-        private readonly ILogger<ProfilesController> _logger;
         private readonly SdkHandler Sdk;
         private readonly ProfileManager ProfileManager;
 
-        public SdkController(ILogger<ProfilesController> logger, SdkHandler sdk, ProfileManager profileManager)
+        public SdkController(SdkHandler sdk, ProfileManager profileManager)
         {
-            _logger = logger;
             Sdk = sdk;
             ProfileManager = profileManager;
         }

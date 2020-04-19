@@ -13,7 +13,7 @@ namespace OpenCueService.Controllers
         {
             if (context.Exception is SdkError exception)
             {
-                context.Result = new ObjectResult(exception.CorsairError.GetMessage())
+                context.Result = new ObjectResult(exception.Message)
                 {
                     StatusCode = 400,
                 };
