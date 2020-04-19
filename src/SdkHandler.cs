@@ -135,6 +135,7 @@ namespace OpenCueService
                 case CorsairError.CE_ProtocolHandshakeMissing: return "ProtocolHandshakeMissing - developer did not perform protocol handshake";
                 case CorsairError.CE_IncompatibleProtocol: return "IncompatibleProtocol - developer is calling the function that is not supported by the server (either protocol has been broken by server or client or the function is new and server is too old. Check CorsairProtocolDetails for details)";
                 case CorsairError.CE_InvalidArguments: return "InvalidArguments - developer supplied invalid arguments to the function (for specifics look at function descriptions)";
+                case CorsairError.CE_ProfilesConfigurationProblem: return "ProfilesConfigurationProblem - problem related to profiles and priorities file";
                 case CorsairError.Unknown:
                 default: return "Unknown - this error code is unknown";
             }
@@ -149,6 +150,7 @@ namespace OpenCueService
         CE_ProtocolHandshakeMissing = 3,
         CE_IncompatibleProtocol = 4,
         CE_InvalidArguments = 5,
+        CE_ProfilesConfigurationProblem = 7,
         Unknown = -1
     }
 }
