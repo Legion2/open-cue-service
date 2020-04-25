@@ -1,4 +1,4 @@
-# Open CUE Service [![Build](https://github.com/Legion2/open-cue-service/workflows/Build/badge.svg)](https://github.com/Legion2/open-cue-service/actions?query=workflow%3ABuild)
+# Open CUE Service [![latest release](https://img.shields.io/github/v/release/Legion2/open-cue-service)](https://github.com/Legion2/open-cue-service/releases/latest) [![Build](https://github.com/Legion2/open-cue-service/workflows/Build/badge.svg)](https://github.com/Legion2/open-cue-service/actions?query=workflow%3ABuild)
 HTTP REST API service for [Open CUE CLI](https://github.com/Legion2/open-cue-cli).
 
 ## Getting Started
