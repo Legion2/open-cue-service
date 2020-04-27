@@ -120,6 +120,10 @@ namespace OpenCueService
         public void DeactivateAllProfiles()
         {
             Sdk.ClearAllStates();
+            foreach (var profile in Profiles.Values)
+            {
+                profile.State = false;
+            }
         }
 
         public void StopAllEvents()
