@@ -24,6 +24,8 @@ namespace OpenCueService
             services.AddSingleton<SdkHandler>();
             services.AddSingleton<ProfileManager>();
 
+            services.AddHostedService<SyncService>();
+
             services.AddControllers(options =>
             {
                 options.Filters.Add(new SdkExceptionFilter());

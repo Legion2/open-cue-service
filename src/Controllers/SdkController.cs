@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace OpenCueService.Controllers
 {
@@ -15,6 +14,13 @@ namespace OpenCueService.Controllers
         {
             Sdk = sdk;
             ProfileManager = profileManager;
+        }
+
+        [HttpGet]
+        [Route("connection")]
+        public bool GetConnection()
+        {
+            return ProfileManager.IsConnected();
         }
 
         [HttpGet]

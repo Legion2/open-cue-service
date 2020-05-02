@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace OpenCueService.Controllers
 {
+    using CgSdk;
     public class SdkExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order { get; set; } = int.MaxValue - 10;

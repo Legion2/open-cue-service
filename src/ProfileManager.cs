@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace OpenCueService
 {
+    using CgSdk;
     public class ProfileManager
     {
         private static readonly string GameSkdEffectsPath = @"c:\Program Files (x86)\Corsair\CORSAIR iCUE Software\GameSdkEffects";
@@ -27,6 +28,8 @@ namespace OpenCueService
         private readonly IDictionary<string, Profile> Profiles;
 
         private Profile? lastTriggeredProfile = null;
+
+        private bool Connected;
 
         private IDictionary<string, int> loadPriorities()
         {
@@ -51,11 +54,17 @@ namespace OpenCueService
             return Priorities;
         }
 
+        public bool IsConnected()
+        {
+            return Connected;
+        }
+
         public IDictionary<string, Profile> GetAllProfiles()
         {
             return Profiles;
         }
 
+        // Get profile by name
         public Profile? GetProfile(string name)
         {
             var Profile = Profiles.Values.FirstOrDefault(profile => profile.Name.Equals(name));
@@ -71,23 +80,22 @@ namespace OpenCueService
 
         public Profile TriggerProfile(Profile profile)
         {
-            Sdk.SetEvent(profile.Name);
-            lastTriggeredProfile = profile;
             profile.State = false;
+            lastTriggeredProfile = profile;
+            Sdk.SetEvent(profile.Name);
             return profile;
         }
 
         public Profile ActivateProfile(Profile profile, bool activate)
         {
+            profile.State = activate;
             if (activate)
             {
                 Sdk.SetState(profile.Name);
-                profile.State = true;
             }
             else
             {
                 Sdk.ClearState(profile.Name);
-                profile.State = false;
             }
             return profile;
         }
@@ -102,13 +110,6 @@ namespace OpenCueService
             if (value)
             {
                 Sdk.RequestControl();
-                foreach (var profile in Profiles.Values)
-                {
-                    if (profile.State)
-                    {
-                        Sdk.SetState(profile.Name);
-                    }
-                }
             }
             else
             {
@@ -119,16 +120,57 @@ namespace OpenCueService
 
         public void DeactivateAllProfiles()
         {
-            Sdk.ClearAllStates();
             foreach (var profile in Profiles.Values)
             {
                 profile.State = false;
             }
+            Sdk.ClearAllStates();
         }
 
         public void StopAllEvents()
         {
             Sdk.ClearAllEvents();
+        }
+
+        // Sync the state with the SDK and reconnect if needed
+        public void Sync()
+        {
+            if (Sdk.GetCorsairProtocolDetails().ServerProtocolVersion == 0)
+            {
+                Connected = false;
+                Sdk.Reconnect();
+            }
+
+            try
+            {
+                foreach (var profile in Profiles.Values)
+                {
+                    if (profile.State)
+                    {
+                        Sdk.SetState(profile.Name);
+                    }
+                    else
+                    {
+                        Sdk.ClearState(profile.Name);
+                    }
+                }
+            }
+            catch (SdkError e)
+            {
+                if (e.CorsairError == CorsairError.CE_ServerNotFound)
+                {
+                    Connected = false;
+                    Sdk.Reconnect();
+                }
+                else
+                {
+                    throw e;
+                }
+            }
+            if (Sdk.GetCorsairProtocolDetails().ServerProtocolVersion > 0)
+            {
+                Connected = true;
+            }
         }
     }
 }
