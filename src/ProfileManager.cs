@@ -110,6 +110,7 @@ namespace OpenCueService
             if (value)
             {
                 Sdk.RequestControl();
+                Sync();
             }
             else
             {
