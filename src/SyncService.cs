@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace OpenCueService
 {
@@ -11,9 +12,12 @@ namespace OpenCueService
     public class SyncService : IHostedService, IDisposable
     {
         private readonly ILogger _logger;
-        public SyncService(ILogger<SyncService> logger, ProfileManager profileManager)
+
+        private readonly int AutoSyncInterval;
+        public SyncService(ILogger<SyncService> logger, IOptions<Config> config, ProfileManager profileManager)
         {
             _logger = logger;
+            AutoSyncInterval = config.Value.AutoSyncInterval;
             ProfileManager = profileManager;
         }
 
@@ -23,7 +27,7 @@ namespace OpenCueService
 
         public Task StartAsync(CancellationToken stoppingToken)
         {
-            _timer = new Timer(DoWork, null, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10));
+            _timer = new Timer(DoWork, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(AutoSyncInterval));
             return Task.CompletedTask;
         }
 
@@ -31,7 +35,7 @@ namespace OpenCueService
         {
             try
             {
-                ProfileManager.Sync();
+                ProfileManager.TriggerAutoSync();
             }
             catch (SdkError e)
             {

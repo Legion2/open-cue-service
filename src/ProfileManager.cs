@@ -132,44 +132,62 @@ namespace OpenCueService
             Sdk.ClearAllEvents();
         }
 
-        // Sync the state with the SDK and reconnect if needed
-        public void Sync()
+        public void TriggerAutoSync()
         {
+            if (!Sdk.HasControl())
+            {
+                return;
+            }
+
             if (Sdk.GetCorsairProtocolDetails().ServerProtocolVersion == 0)
             {
                 Connected = false;
-                Sdk.Reconnect();
             }
 
-            try
+            if (Connected && Config.AutoSyncProfileName != "")
             {
-                foreach (var profile in Profiles.Values)
+                try
                 {
-                    if (profile.State)
+                    Sdk.SetState(Config.AutoSyncProfileName);
+                }
+                catch (SdkError e)
+                {
+                    if (e.CorsairError == CorsairError.CE_ServerNotFound)
                     {
-                        Sdk.SetState(profile.Name);
+                        Connected = false;
                     }
                     else
                     {
-                        Sdk.ClearState(profile.Name);
+                        throw e;
                     }
                 }
             }
-            catch (SdkError e)
+
+            if (!Connected)
             {
-                if (e.CorsairError == CorsairError.CE_ServerNotFound)
+                Sdk.Reconnect();
+
+                if (Sdk.GetCorsairProtocolDetails().ServerProtocolVersion > 0)
                 {
-                    Connected = false;
-                    Sdk.Reconnect();
+                    Connected = true;
+                    Sync();
+                }
+            }
+        }
+
+        // Sync the state with the SDK
+        public void Sync()
+        {
+            foreach (var profile in Profiles.Values)
+            {
+                if (profile.State)
+                {
+                    Sdk.SetState(profile.Name);
                 }
                 else
                 {
-                    throw e;
+                    Sdk.ClearState(profile.Name);
                 }
-            }
-            if (Sdk.GetCorsairProtocolDetails().ServerProtocolVersion > 0)
-            {
-                Connected = true;
             }
         }
     }
