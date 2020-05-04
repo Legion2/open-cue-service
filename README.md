@@ -19,3 +19,9 @@ Just start the server and open [http://localhost:25555/openapi](http://localhost
 ## Configuration
 The profiles directory can be changed, the default is `profiles`.
 Add the property `"Game": "<your profile directory>"` to the `appsettings.json`.
+
+## License
+This project is distributed under [Apache License, Version 2.0](LICENSE).
+
+The software iCUE and the file CgSDK.x64_2015.dll are supplied by Corsair Components, Inc. and distributed under different terms.
+For more information, contact Corsair Components, Inc.
