@@ -50,7 +50,7 @@ namespace OpenCueService.Controllers
             return GetProfile(name).State;
         }
         //Set the state of a profile
-        [HttpPost]
+        [HttpPut]
         [Route("{name}/state/{value:bool}")]
         public Profile SetState(string name, bool value)
         {

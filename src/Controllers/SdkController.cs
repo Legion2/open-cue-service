@@ -44,7 +44,7 @@ namespace OpenCueService.Controllers
             return Sdk.HasControl();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("control/{value:bool}")]
         public bool Control(bool value)
         {
@@ -52,13 +52,13 @@ namespace OpenCueService.Controllers
         }
 
         [HttpPost]
-        [Route("stop-events")]
+        [Route("stop-all-events")]
         public void StopAllEvents()
         {
             ProfileManager.StopAllEvents();
         }
         [HttpPost]
-        [Route("deactivate-profiles")]
+        [Route("deactivate-all-profiles")]
         public void DeactivateAllProfiles()
         {
             ProfileManager.DeactivateAllProfiles();
