@@ -51,6 +51,7 @@ namespace OpenCueService
                     throw new Exception("Bad priorities.cfg");
                 }
             }
+            Priorities.Remove(Config.AutoSyncProfileName);
             return Priorities;
         }
 
