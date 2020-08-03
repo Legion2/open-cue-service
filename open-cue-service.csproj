@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <Title>Open CUE Service</Title>
-    <Version>0.2.2</Version>
+    <Version>0.2.3</Version>
     <Authors>Legion2</Authors>
     <Description>HTTP REST API service for Open CUE CLI</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
