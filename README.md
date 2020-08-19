@@ -7,6 +7,7 @@ By default the Server controls the iCUE profiles in the `C:\Program Files (x86)\
 Create this directory or configure another one, for details on how to setup profiles see [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles).
 Then execute the `open-cue-service.exe` to start the service.
 It runs on [http://localhost:25555](http://localhost:25555) and can be accessed with any Rest/Http client.
+By default the API is only available on localhost for security reasons, if you want to expose it in your network please setup a HTTP proxy with authentication such as nginx.
 
 ## API Documentation
 The Rest API exposes an OpenAPI Document at `/openapi/v1/openapi.json`.
