@@ -9,7 +9,7 @@ namespace OpenCueService
     using CgSdk;
     public class ProfileManager
     {
-        private static readonly string GameSkdEffectsPath = @"c:\Program Files (x86)\Corsair\CORSAIR iCUE Software\GameSdkEffects";
+        private static readonly string GameSkdEffectsPath = @"c:\ProgramData\Corsair\CUE\GameSdkEffects";
 
         public ProfileManager(IOptions<Config> config, SdkHandler sdkHandler)
         {
