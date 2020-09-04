@@ -13,8 +13,9 @@ By default the API is only available on localhost for security reasons, if you w
 The Rest API exposes an OpenAPI Document at `/openapi/v1/openapi.json`.
 The API definition can be viewed in the interactive Swagger UI which is hosted at `/openapi`.
 Just start the server and open [http://localhost:25555/openapi](http://localhost:25555/openapi).
+You can also open the [online version of the API documentation](https://legion2.github.io/open-cue-service/) to explore it without running the server.
 
-![openapi](docs/img/openapi.png)
+[![openapi](docs/img/openapi.png)](https://legion2.github.io/open-cue-service/)
 
 ## Configuration
 The profiles directory can be changed, the default is `profiles`.
