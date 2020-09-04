@@ -1,0 +1,13 @@
+{
+  "runtime": "NetCore31",
+  "defaultVariables": "configuration=Debug",
+  "documentGenerator": {
+    "aspNetCoreToOpenApi": {
+      "project": "open-cue-service.csproj",
+      "configuration": "$(configuration)",
+      "useDocumentProvider": true,
+      "documentName": "openapi",
+      "output": "openapi.json"
+    }
+  }
+}
