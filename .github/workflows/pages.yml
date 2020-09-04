@@ -16,6 +16,8 @@ jobs:
           dotnet-version: 3.1.302
       - name: Install dependencies
         run: dotnet restore
+      - name: Install tools
+        run: dotnet tool restore
       - name: Generate openapi.json
         run: dotnet nswag run nswag.json
       - name: Upload openapi.json
