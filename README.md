@@ -26,6 +26,7 @@ For the Auto Sync feature an additional profile is required, which must be in th
 The profile should be empty and should not have any lighting effect.
 The profile is used by the service to check if iCUE is running and can be controlled.
 Change the property `"AutoSyncProfileName": "<name of empty profile>"` in the `appsettings.json`.
+When using the Auto Sync feature, for some effects the opacity value lower than 100% can cause lighting artifacts.
 
 You can also configure the Auto Sync Interval, which is the time in seconds between the checks if iCUE is running.
 Change the property `"AutoSyncInterval": <interval in seconds>` in the `appsettings.json`.
