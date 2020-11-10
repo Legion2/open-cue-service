@@ -31,6 +31,13 @@ When using the Auto Sync feature, for some effects the opacity value lower than 
 You can also configure the Auto Sync Interval, which is the time in seconds between the checks if iCUE is running.
 Change the property `"AutoSyncInterval": <interval in seconds>` in the `appsettings.json`.
 
+## Troubleshooting
+
+### Sdk Error occurred: InvalidArguments
+
+This error could indicate the missing or wrong profiles directory.
+Make sure the profiles directory is correctly created according to the [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles) and the correct name is configured in the `appsettings.json` (`Game` property).
+
 ## License
 This project is distributed under [Apache License, Version 2.0](LICENSE).
 
