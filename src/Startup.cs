@@ -37,7 +37,7 @@ namespace OpenCueService
                 document.DocumentName = "openapi";
                 document.Title = "Open CUE Service";
                 document.Description = "HTTP REST API service for Open CUE CLI";
-                document.Version = "0.3.2";
+                document.Version = "0.4.0";
             });
         }
 

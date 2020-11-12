@@ -10,7 +10,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.302
+          dotnet-version: 5.0.100
       - name: Install dependencies
         run: dotnet restore
       - name: Build
@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: open-cue-service
-          path: bin/Release/netcoreapp3.1/win-x64/publish/
+          path: bin/Release/net5.0/win-x64/publish/
