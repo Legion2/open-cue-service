@@ -10,5 +10,7 @@ namespace OpenCueService
         public string AutoSyncProfileName { get; set; } = "";
         // The interval in seconds between automatic sync with iCUE
         public int AutoSyncInterval { get; set; } = 10;
+        // The name of the profile activated when starting the 
+        public string StartProfileName { get; set; } = "";
     }
 }

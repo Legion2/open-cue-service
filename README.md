@@ -31,6 +31,9 @@ When using the Auto Sync feature, for some effects the opacity value lower than 
 You can also configure the Auto Sync Interval, which is the time in seconds between the checks if iCUE is running.
 Change the property `"AutoSyncInterval": <interval in seconds>` in the `appsettings.json`.
 
+To activate a profile on startup you can set the property `"StartProfileName": "<profile name>"` to an existing profile you want to be active on start.
+Default is an empty string, which means no profile will be activated on startup.
+
 ## Troubleshooting
 
 ### Sdk Error occurred: InvalidArguments

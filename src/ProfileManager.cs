@@ -21,6 +21,14 @@ namespace OpenCueService
                 Priority = entry.Value,
                 State = false
             });
+
+            if (Config.StartProfileName != "") {
+                var startProfile = this.GetProfile(Config.StartProfileName);
+                if (startProfile == null) {
+                    throw new ArgumentException("The specified Start Profile does not exist!");
+                }
+                this.ActivateProfile(startProfile, true);
+            }
         }
 
         private readonly Config Config;
