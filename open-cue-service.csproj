@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <Title>Open CUE Service</Title>
-    <Version>0.3.1</Version>
+    <Version>0.3.2</Version>
     <Authors>Legion2</Authors>
     <Description>HTTP REST API service for Open CUE CLI</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CgSDK.x64_2015.dll" CopyToPublishDirectory="Always" />
+    <Content Remove="nswag.json" />
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <Content Remove="appsettings.*.json" />
