@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NSwag.AspNetCore" Version="13.9.2" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.9.3" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CgSDK.x64_2015.dll" CopyToPublishDirectory="Always" />
