@@ -41,6 +41,13 @@ Default is an empty string, which means no profile will be activated on startup.
 This error could indicate the missing or wrong profiles directory.
 Make sure the profiles directory is correctly created according to the [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles) and the correct name is configured in the `appsettings.json` (`Game` property).
 
+### Sdk Error occurred: ProfilesConfigurationProblem
+
+When you get this error, make sure you have created the `priorities.cfg` file with all the entries correctly.
+Make sure you only use allows character in the name of the profiles.
+Reexport the profiles which the correct name, do not rename the profiles after you have exported them.
+Restart iCUE and Open CUE Service after you have changed any file.
+
 ## License
 This project is distributed under [Apache License, Version 2.0](LICENSE).
 
