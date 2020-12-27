@@ -8,21 +8,22 @@ namespace OpenCueService
     {
         private CorsairGameSdk CorsairGameSdk;
 
-        private readonly string Game;
+        private readonly string ProfilesDirectoryName;
         public SdkHandler(IOptions<Config> config)
         {
-            Game = config.Value.Game;
-            CorsairGameSdk = new CorsairGameSdk(Game);
+            ProfilesDirectoryName = config.Value.ProfilesDirectoryName;
+            CorsairGameSdk = new CorsairGameSdk(ProfilesDirectoryName);
         }
         public void Reconnect() {
-            CorsairGameSdk = new CorsairGameSdk(Game);
+            CorsairGameSdk = new CorsairGameSdk(ProfilesDirectoryName);
         }
         public CorsairProtocolDetails GetCorsairProtocolDetails()
         {
             return CorsairGameSdk.GetCorsairProtocolDetails();
         }
 
-        public string GetGame()
+        // Map ProfilesDirectoryName to Game
+        public string GetProfilesDirectoryName()
         {
             return CorsairGameSdk.GetGame();
         }

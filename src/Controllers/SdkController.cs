@@ -24,10 +24,10 @@ namespace OpenCueService.Controllers
         }
 
         [HttpGet]
-        [Route("game")]
-        public string GetGame()
+        [Route("profiles-directory-name")]
+        public string GetProfilesDirectoryName()
         {
-            return Sdk.GetGame();
+            return Sdk.GetProfilesDirectoryName();
         }
 
         [HttpGet]

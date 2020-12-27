@@ -19,7 +19,7 @@ You can also open the [online version of the API documentation](https://legion2.
 
 ## Configuration
 The profiles directory can be changed, the default is `profiles`.
-Change the property `"Game": "<your profile directory>"` in the `appsettings.json`.
+Change the property `"ProfilesDirectoryName": "<your profile directory>"` in the `appsettings.json`.
 
 The Auto Sync for automatic reconnect and detection of crashed iCUE must be enable in the configuration.
 For the Auto Sync feature an additional profile is required, which must be in the selected profile directory.
@@ -39,7 +39,7 @@ Default is an empty string, which means no profile will be activated on startup.
 ### Sdk Error occurred: InvalidArguments
 
 This error could indicate the missing or wrong profiles directory.
-Make sure the profiles directory is correctly created according to the [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles) and the correct name is configured in the `appsettings.json` (`Game` property).
+Make sure the profiles directory is correctly created according to the [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles) and the correct name is configured in the `appsettings.json` (`ProfilesDirectoryName` property).
 
 ### Sdk Error occurred: ProfilesConfigurationProblem
 

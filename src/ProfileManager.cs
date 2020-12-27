@@ -41,7 +41,7 @@ namespace OpenCueService
 
         private IDictionary<string, int> loadPriorities()
         {
-            var ProfilePrioritiesFile = Path.Combine(GameSkdEffectsPath, Config.Game, "priorities.cfg");
+            var ProfilePrioritiesFile = Path.Combine(GameSkdEffectsPath, Config.ProfilesDirectoryName, "priorities.cfg");
             var Priorities = new Dictionary<string, int>();
             foreach (var row in File.ReadAllLines(ProfilePrioritiesFile))
             {
