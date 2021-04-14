@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using OpenCue.Sdk;
 
-namespace OpenCueService.Controllers
+namespace OpenCue.Service.Controllers
 {
-    using CgSdk;
     [ApiController]
     [Route("api/sdk")]
     public class SdkController : ControllerBase

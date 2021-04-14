@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace OpenCueService.CgSdk
+namespace OpenCue.Sdk
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct _CorsairProtocolDetails

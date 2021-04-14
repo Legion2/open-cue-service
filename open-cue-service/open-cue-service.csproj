@@ -8,7 +8,7 @@
     <RepositoryUrl>https://github.com/Legion2/open-cue-service</RepositoryUrl>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>OpenCueService</RootNamespace>
+    <RootNamespace>OpenCue.Service</RootNamespace>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
@@ -24,10 +24,20 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.10.9" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CgSDK.x64_2015.dll" CopyToPublishDirectory="Always" />
     <Content Remove="nswag.json" />
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <Content Remove="appsettings.*.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="lib/CgSDK.x64_2015.dll">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\open-cue-sdk\open-cue-sdk.csproj">
+      <IncludeAssets>all</IncludeAssets>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
   </ItemGroup>
 </Project>

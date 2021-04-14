@@ -1,4 +1,4 @@
-namespace OpenCueService
+namespace OpenCue.Service
 {
     public class Profile
     {

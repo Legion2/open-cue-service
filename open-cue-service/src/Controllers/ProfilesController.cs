@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OpenCueService.Controllers
+namespace OpenCue.Service.Controllers
 {
     [ApiController]
     [Route("api/profiles")]

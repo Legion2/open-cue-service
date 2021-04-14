@@ -17,6 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'csharp' ]
+    defaults:
+      run:
+        working-directory: open-cue-service
 
     steps:
     - name: Checkout repository

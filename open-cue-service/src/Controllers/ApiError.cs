@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenCueService
+namespace OpenCue.Service
 {
     public class ApiError : Exception
     {
