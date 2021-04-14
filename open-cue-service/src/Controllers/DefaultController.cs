@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace OpenCueService
+namespace OpenCue.Service
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     public class DefaultController : Controller

@@ -3,10 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Options;
+using OpenCue.Sdk;
 
-namespace OpenCueService
+namespace OpenCue.Service
 {
-    using CgSdk;
     public class ProfileManager
     {
         private static readonly string GameSkdEffectsPath = @"c:\ProgramData\Corsair\CUE\GameSdkEffects";

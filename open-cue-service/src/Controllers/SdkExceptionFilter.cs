@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using OpenCue.Sdk;
 
-namespace OpenCueService.Controllers
+namespace OpenCue.Service.Controllers
 {
-    public class ApiErrorFilter : IActionFilter, IOrderedFilter
+    public class SdkExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order { get; set; } = int.MaxValue - 10;
 
@@ -11,11 +12,11 @@ namespace OpenCueService.Controllers
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            if (context.Exception is ApiError apiError)
+            if (context.Exception is SdkError exception)
             {
-                context.Result = new ObjectResult(apiError.HttpMessage)
+                context.Result = new ObjectResult(exception.Message)
                 {
-                    StatusCode = apiError.StatusCode,
+                    StatusCode = 400,
                 };
                 context.ExceptionHandled = true;
             }

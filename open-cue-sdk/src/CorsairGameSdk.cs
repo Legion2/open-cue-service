@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenCueService.CgSdk
+namespace OpenCue.Sdk
 {
     public class CorsairGameSdk
     {

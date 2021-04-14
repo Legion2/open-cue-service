@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
+using OpenCue.Sdk;
 
-namespace OpenCueService
+namespace OpenCue.Service
 {
-    using CgSdk;
     public class SdkHandler
     {
         private CorsairGameSdk CorsairGameSdk;
@@ -14,7 +13,8 @@ namespace OpenCueService
             ProfilesDirectoryName = config.Value.ProfilesDirectoryName;
             CorsairGameSdk = new CorsairGameSdk(ProfilesDirectoryName);
         }
-        public void Reconnect() {
+        public void Reconnect()
+        {
             CorsairGameSdk = new CorsairGameSdk(ProfilesDirectoryName);
         }
         public CorsairProtocolDetails GetCorsairProtocolDetails()

@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "open-cue-sdk", "open-cue-sdk\open-cue-sdk.csproj", "{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "open-cue-service", "open-cue-service\open-cue-service.csproj", "{881E44AF-8A08-4748-8CD2-16905CD10D7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|x64.Build.0 = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|x64.ActiveCfg = Release|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|x64.Build.0 = Release|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCA93F9E-75D1-45C9-BD63-4C0D2FBDA225}.Release|x86.Build.0 = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|x64.Build.0 = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Debug|x86.Build.0 = Debug|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|x64.ActiveCfg = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|x64.Build.0 = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|x86.ActiveCfg = Release|Any CPU
+		{881E44AF-8A08-4748-8CD2-16905CD10D7F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

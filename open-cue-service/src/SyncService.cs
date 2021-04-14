@@ -4,11 +4,10 @@ using System.Threading;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OpenCue.Sdk;
 
-namespace OpenCueService
+namespace OpenCue.Service
 {
-    using CgSdk;
-
     public class SyncService : IHostedService, IDisposable
     {
         private readonly ILogger _logger;

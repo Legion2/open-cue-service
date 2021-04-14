@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Title>Open CUE SDK</Title>
+    <Version>0.5.0</Version>
+    <Authors>Legion2</Authors>
+    <Description>Wrapper of the Corsair Game SDK</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Legion2/open-cue-service</RepositoryUrl>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>OpenCue.Sdk</RootNamespace>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IsPackable>true</IsPackable>
+    <PackageId>OpenCUE.SDK</PackageId>
+
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Content Update="lib/CgSDK.x64_2015.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib/$(TargetFramework)</PackagePath>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>-->
+  <ItemGroup>
+  <Reference Include="MyAssembly">
+    <HintPath>lib/CgSDK.x64_2015.dll</HintPath>
+  </Reference>
+</ItemGroup>
+</Project>
