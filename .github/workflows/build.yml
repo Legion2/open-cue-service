@@ -26,4 +26,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: open-cue-service
-          path: bin/Release/net5.0/win-x64/publish/
+          path: open-cue-service/bin/Release/net5.0/win-x64/publish/

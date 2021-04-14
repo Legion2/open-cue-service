@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: spec-file
-          path: openapi.json
+          path: open-cue-service/openapi.json
   deploy:
     needs: generate-openapi-spec
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         uses: Legion2/swagger-ui-action@v1
         with:
           output: swagger-ui
-          spec-file: openapi.json
+          spec-file: open-cue-service/openapi.json
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

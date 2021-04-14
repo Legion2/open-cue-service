@@ -35,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release-id.outputs.upload_url }}
-          asset_path: publish/open-cue-service.zip
+          asset_path: open-cue-service/publish/open-cue-service.zip
           asset_name: open-cue-service.zip
           asset_content_type: application/zip
