@@ -3,7 +3,7 @@ HTTP REST API service for [Open CUE CLI](https://github.com/Legion2/open-cue-cli
 
 ## Getting Started
 Download and extract the latest [release](https://github.com/Legion2/open-cue-service/releases).
-Starting with iCUE 3.82.80 the iCUE profiles in the `C:\ProgramData\Corsair\CUE\GameSdkEffects\profiles` directory are used.
+With iCUE 4 the iCUE profiles in the `C:\ProgramData\Corsair\CUE4\GameSdkEffects\profiles` directory are used.
 Create this directory or configure another one, for details on how to setup profiles see [Open CUE CLI documentation](https://github.com/Legion2/open-cue-cli#profiles).
 Then execute the `open-cue-service.exe` to start the service.
 It runs on [http://localhost:25555](http://localhost:25555) and can be accessed with any Rest/Http client.
