@@ -4,7 +4,7 @@
   "info": {
     "title": "Open CUE Service",
     "description": "HTTP REST API service for Open CUE CLI",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "paths": {
     "/api/profiles": {
