@@ -20,7 +20,7 @@ jobs:
       - name: Publish
         run: dotnet publish --configuration Release --no-restore
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: open-cue-service
           path: bin/Release/net7.0/win-x64/publish/
